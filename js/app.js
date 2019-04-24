@@ -7,10 +7,10 @@ $( document ).ready(function() {
       let tempURL = {};
       let tempName = {}; 
       $("#photo-template").append('<h2>' + data[i].title + '</h2>');
-      $("#photo-template").append('<img src="' + data[i].image_url + '" />');
-      $("img").attr({class:data[i].keyword + " landscape"});
+      $("#photo-template").append('<li><img src="' + data[i].image_url + '" /></li>');
+      $("img").addClass("landscape");
       $("select").append($('<option>', {value:data[i].image_url, text:data[i].keyword}));
-      tempURL.imgUrl = data[i].image_rl;
+      tempURL.imgUrl = data[i].image_url;
       tempName.names = data[i].keyword;
       animalIMG.push(tempURL);
       animalName.push(tempName);
