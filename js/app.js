@@ -28,4 +28,3 @@ $("select").change(function(){
   $("#photo-template").append('<img src="' + newImg + '" />');
   $("img").addClass( "landscape" );
 });
-
