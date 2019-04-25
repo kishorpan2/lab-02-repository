@@ -1,14 +1,21 @@
-const animalIMG = [];
-const animalName = []; // array of keyword strings
+let animalIMG = [];
+let animalName = []; // array of keyword strings
 
 function pullAndPopData(url) {
-  $.getJSON(url, function(data) { 
+  $.getJSON(url, function(data) {
+    animalIMG = [];
+    animalName = [];
     data.forEach(function(el) {
       $('#photo-template').append(`<li data-id="${el.keyword}"><h2>${el.title}</h2><img class="landscape" src="${el.image_url}" /></li>`);
 
       animalIMG.push(el);
     });
+
+    // remove all options except with value="default"
+    $('option').not('[value="default"]').remove();
+
     // call our keyword duplicate checker function
+    console.log(animalIMG);
     makeAnimalKeywords(animalIMG); // pass in array of objects
 
     // create and append <option> with filtered keywords
@@ -52,4 +59,14 @@ $('#page2').click(function() {
   let picList = $('#photo-template').children();
   $(picList).remove();
   //we need to call the second page;
+
+  pullAndPopData('data/page-2.json');
+});
+$('#page1').click(function() {
+  //clear page1
+  let picList = $('#photo-template').children();
+  $(picList).remove();
+  //we need to call the second page;
+
+  pullAndPopData('data/page-1.json');
 });
