@@ -1,8 +1,8 @@
 const animalIMG = [];
 const animalName = []; // array of keyword strings
 
-$( document ).ready(function() {
-  $.getJSON('./data/page-1.json', function(data) { 
+function pullAndPopData(url) {
+  $.getJSON(url, function(data) { 
     data.forEach(function(el) {
       $('#photo-template').append(`<li data-id="${el.keyword}"><h2>${el.title}</h2><img class="landscape" src="${el.image_url}" /></li>`);
 
@@ -16,7 +16,9 @@ $( document ).ready(function() {
       $('select').append($('<option>', {value: el, text: el}));
     });
   });
-});
+}
+
+pullAndPopData('data/page-1.json');
 
 $('select').change(function(){
   let selectedKeyword = $(this).val();
@@ -44,3 +46,10 @@ let makeAnimalKeywords = (arr) => {
   });
   console.log('animalName', animalName);
 };
+
+$('#page2').click(function() {
+  //clear page1
+  let picList = $('#photo-template').children();
+  $(picList).remove();
+  //we need to call the second page;
+});
