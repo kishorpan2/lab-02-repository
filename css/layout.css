@@ -18,10 +18,22 @@ body {
 }
 
 #photo-template {
-	column-count: 3;
-  column-gap: 1em;
+	/* column-count: 3;
+  column-gap: 1em; */
+}
+
+#photo-template li {
+  width: calc(100% / 3);
+  float: left;
 }
 
 ul, li {
   list-style: none;
+}
+
+footer {
+  clear: both;
+  text-align: center;
+  margin: 40px 0;
+  height: 40px;
 }
